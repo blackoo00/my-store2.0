@@ -5,6 +5,9 @@ import {Provider} from 'react-redux'
 import routes from './routes'
 import configureStore from './common/store/configureStore'
 
+import FastClick from 'fastclick';
+FastClick.attach(document.body);
+
 const store = configureStore(window.REDUX_STATE)
 
 match({history: browserHistory, routes}, (error, redirectLocation, renderProps) => {

@@ -1,4 +1,44 @@
+@font-face {
+  font-family: 'iconfont';  /* project id 193627 */
+  src: url('//at.alicdn.com/t/font_p4zqdqe1v48ia4i.eot');
+  src: url('//at.alicdn.com/t/font_p4zqdqe1v48ia4i.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_p4zqdqe1v48ia4i.woff') format('woff'),
+  url('//at.alicdn.com/t/font_p4zqdqe1v48ia4i.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_p4zqdqe1v48ia4i.svg#iconfont') format('svg');
+}
+.iconfont{
+    font-family: 'iconfont' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    font-smoothing: antialiased;
+}
+html{
+    font-size: 20px;
+}
 body {
     font-family: PingFangSC-Light, 'helvetica neue', 'hiragino sans gb', arial, 'microsoft yahei ui', 'microsoft yahei', simsun, sans-serif;
-    font-size: 12px;
+    font-size: 16px;
 }
+html,body{
+    height: 100%;
+    background-color: #eee;
+}
+img{
+    display: block;
+    width: 100%;
+}
+a{
+    color: #000;
+}
+ul li{
+    list-style: none;
+}
+*{
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+

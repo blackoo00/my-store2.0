@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import Router from 'koa-router'
 
-const router = new Router({prefix: '/api'})
+const router = new Router({prefix: '/api'})//定义接口名（详情可看client中actions中的ajax请求）
 let subRouter
 
 fs.readdirSync(__dirname)

@@ -35,7 +35,7 @@ module.exports = {
                 plugins: ['transform-runtime', 'add-module-exports'],
                 cacheDirectory: true
             }
-        }, {
+        },{
             test: /\.scss$/,
             loaders: [
                 'style',
@@ -43,6 +43,9 @@ module.exports = {
                 'sass'
             ]
         }, {
+            test: /\.css$/,
+            loader: "style!css"
+        },{
             test: /\.(jpg|png|gif|webp)$/,
             loader: 'url?limit=8000'
         }, {
@@ -53,20 +56,28 @@ module.exports = {
             loader: 'html?minimize=false'
         }]
     },
-    resolve: {extensions: ['', '.js', '.json', '.scss']},
+    resolve: {
+        extensions: ['', '.js', '.json', '.scss'],
+        alias:{
+        }
+    },
     plugins: [
-        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.OccurenceOrderPlugin(),//为组件分配ID，通过这个插件webpack可以分析和优先考虑使用最多的模块，并为它们分配最小的ID
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor', 'manifest'],
             filename: '[name].js'
         }),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
-        new webpack.DefinePlugin({'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)}),
+        new webpack.HotModuleReplacementPlugin(),//全局开启代码热替换
+        new webpack.NoErrorsPlugin(),//跳过编译时出错的代码并记录，使编译后运行时的包不会发生错误。
+        new webpack.DefinePlugin(
+            {
+                'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+            }
+        ),
         new HtmlWebpackPlugin({
             filename: '../views/dev/index.html',
             template: './views/tpl/index.tpl.html'
         }),
-        new ProgressBarPlugin({summary: false})
+        new ProgressBarPlugin({summary: false})//进度条
     ]
 }

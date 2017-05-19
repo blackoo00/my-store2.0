@@ -8,12 +8,13 @@ function ajax(options) {
     const defaults = {
         url: null,
         type: 'post',
-        data: {}
+        data: {},
     }
     let promise, action
 
     options = Object.assign({}, defaults, options)
-    promise = request[options.type](options.url).withCredentials()
+    promise = request[options.type](options.url)
+    // .withCredentials()
     Object.keys(options).forEach(key => {
         if (!key.match(/url|type|data/)) {
             promise.set(key, options[key])
@@ -22,12 +23,27 @@ function ajax(options) {
     action = options.type === 'get' ? 'query' : 'send'
 
     return new Promise(resolve => {
-        promise[action](options.data).then(res => {
+        promise[action](options.data).type('form').then(res => {
             resolve(res.body)
         }).catch(err => {
             console.log(err)
         })
     })
+}
+function test(){
+    let url ='http://127.0.0.1/my-store/index.php/Home/Store/test'
+    request
+       .post(url)
+       .send({ name: 'Manny', species: 'cat' })
+       .set('X-API-Key', 'foobar')
+       .set('Accept', 'application/json')
+       .end(function(res){
+         if (res.ok) {
+           alert('yay got ' + JSON.stringify(res.body));
+         } else {
+           alert('Oh no! error ' + res.text);
+         }
+       });
 }
 
 /**
@@ -48,5 +64,6 @@ function getURLParams() {
 
 export default {
     ajax,
-    getURLParams
+    getURLParams,
+    test
 }

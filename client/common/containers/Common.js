@@ -18,8 +18,6 @@ class Common extends Component {
 
         return (
             <div className={styles.app}>
-                <Header/>
-                <Navbar/>
                 <Main>
                     {Children.map(children, child =>
                         cloneElement(child, {...props})

@@ -1,10 +1,11 @@
-// Provide custom regenerator runtime and core-js
+// Provide custom regenerator runtime and core-js(为了完整使用 ES6 的 API)
 require('babel-polyfill')
 
-// Node babel source map support
+// Node babel source map support(nodejs下babel编译es6后异常定位助手)
 require('source-map-support').install()
 
 // Javascript require hook
+// (babel-register模块改写require命令，为它加上一个钩子。此后，每当使用require加载.js、.jsx、.es和.es6后缀名的文件，就会先用Babel进行转码。)
 require('babel-register')({
     presets: ['es2015', 'react', 'stage-0'],
     plugins: ['add-module-exports']
@@ -12,7 +13,7 @@ require('babel-register')({
 
 // Css require hook
 require('css-modules-require-hook')({
-    extensions: ['.scss'],
+    extensions: ['.scss','.css'],
     preprocessCss: (data, filename) =>
         require('node-sass').renderSync({
             data,
@@ -32,7 +33,7 @@ require('asset-require-hook')({
 const app = require('./app.js'),
     convert = require('koa-convert'),
     webpack = require('webpack'),
-    fs = require('fs'),
+    fs = require('fs'),//(file system 文件系统)
     path = require('path'),
     devMiddleware = require('koa-webpack-dev-middleware'),
     hotMiddleware = require('koa-webpack-hot-middleware'),
@@ -57,6 +58,7 @@ compiler.plugin('emit', (compilation, callback) => {
     })
     callback()
 })
+
 
 app.use(views(path.resolve(__dirname, '../views/dev'), {map: {html: 'ejs'}}))
 app.use(clientRoute)

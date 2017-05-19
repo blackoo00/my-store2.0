@@ -1,0 +1,27 @@
+@import "../../common/sass/color.scss";
+@import "../../common/sass/font.scss";
+
+.index-item{
+    margin-bottom: 0.5rem;
+    background-color: $COLOR_INDEX_ITEM;
+}
+.index-pro-item{
+    display: inline-block;
+    width: 50%;
+}
+.index-pro-name-item{
+    height: 35px;
+}
+.index-pro-name{
+    font-size: $FONT_INDEX_PRO_NAME;
+    line-height: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    color: $COLOR_INDEX_PRO_NAME;
+}
+.index-pro-price{
+    color: $COLOR_INDEX_PRO_PRICE;
+}

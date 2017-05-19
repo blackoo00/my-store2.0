@@ -1,0 +1,16 @@
+.cat-wrap{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    padding: 0 15px;
+}
+.cat-item{
+    padding: 0.5rem 0 0 0;
+    width:6.4rem;
+    p{
+        text-align: center;
+    }
+}
+.cat-name{
+    text-align: center;
+}

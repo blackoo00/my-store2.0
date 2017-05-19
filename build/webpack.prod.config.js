@@ -48,6 +48,9 @@ clientConfig = {
             test: /\.scss$/,
             loader: ExtractTextPlugin.extract('style', 'css?modules&camelCase&importLoaders=1&localIdentName=[hash:base64:8]!postcss!sass')
         }, {
+            test: /\.css$/,
+            loader: "style!css"
+        }, {
             test: /\.(jpg|png|gif|webp)$/,
             loader: 'url?limit=8000'
         }, {
@@ -110,6 +113,9 @@ serverConfig = {
                 'css/locals?modules&camelCase&importLoaders=1&localIdentName=[hash:base64:8]',
                 'sass'
             ]
+        }, {
+            test: /\.css$/,
+            loader: "style!css"
         }, {
             test: /\.(jpg|png|gif|webp)$/,
             loader: 'url?limit=8000'
