@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # React Isomorphic Boilerplate
 
 An universal React isomorphic boilerplate for building server-side render web app.
@@ -109,3 +110,6 @@ It happens also when run in development mode. This is caused by when you update 
 ## License
 
 [MIT](https://github.com/chikara-chan/react-isomorphic-boilerplate/blob/master/LICENSE)
+=======
+# my-store2.0
+>>>>>>> e471fdd0decaea6c3b4d8c9e77f7a3bb7bdf6eb0

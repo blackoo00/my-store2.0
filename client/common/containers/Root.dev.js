@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 // import DevTools from './DevTools'
 import Common from './Common'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import '../sass/animation.css'
 
 class Root extends Component {
     constructor() {
@@ -19,17 +17,10 @@ class Root extends Component {
         const {isMounted} = this.state,
             {children} = this.props
         return (
-            <ReactCSSTransitionGroup
-              component="div"
-              transitionName="page"
-              transitionEnterTimeout={300}
-              transitionLeaveTimeout={300}
-              >
-            <div key={this.props.location.pathname} className="page">
-                <Common>{children}</Common>
+            <div>
+                <Common pathname={this.props.location.pathname}>{children}</Common>
                 {isMounted}
             </div>
-            </ReactCSSTransitionGroup>
         )
     }
 }

@@ -8,6 +8,9 @@ import actions from '../actions'
 import styles from '../sass/Common'
 import '../sass/global'
 
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+// import '../sass/animation.css'
+
 class Common extends Component {
     constructor() {
         super()
@@ -17,13 +20,20 @@ class Common extends Component {
         const {children, ...props} = this.props
 
         return (
-            <div className={styles.app}>
-                <Main>
-                    {Children.map(children, child =>
-                        cloneElement(child, {...props})
-                    )}
-                </Main>
+            <ReactCSSTransitionGroup
+              component="div"
+              transitionName="page"
+              transitionEnterTimeout={300}
+              transitionLeaveTimeout={300}
+              >
+            <div key={props.pathname} className="page">
+                    <Main>
+                        {Children.map(children, child =>
+                            cloneElement(child, {...props})
+                        )}
+                    </Main>
             </div>
+            </ReactCSSTransitionGroup>
         )
     }
 }

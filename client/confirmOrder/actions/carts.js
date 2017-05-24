@@ -9,7 +9,11 @@ const receiveProducts = products => ({
 })
 export const getAllProducts = (arg = false) => dispatch => {
   shop.getProducts(products => {
-    dispatch(receiveProducts(products))
+    if(products.length == 0){
+        browserHistory.push({pathname:'/cart'});
+    }else{
+        dispatch(receiveProducts(products))
+    }
   },0,arg)
 }
 //点击编辑按钮

@@ -7,9 +7,9 @@ import {Link} from 'react-router';
 const {TabBar,TabBarItem,TabBarIcon,TabBarLabel} = WeUI;
 
 const App = () => (
-    <TabBar style={{position:"fixed"}}>
+    <TabBar style={{position:"fixed"}} id="Public-footer">
         <TabBarItem>
-            <Link to="home">
+            <Link to="/">
                 <TabBarIcon>
                     <img src="http://mystore-1251466962.cosgz.myqcloud.com/icon_nav_button.png"/>
                 </TabBarIcon>
@@ -33,10 +33,12 @@ const App = () => (
             </Link>
         </TabBarItem>
         <TabBarItem>
-            <TabBarIcon>
-                <img src="http://mystore-1251466962.cosgz.myqcloud.com/icon_nav_button.png"/>
-            </TabBarIcon>
-            <TabBarLabel>我的</TabBarLabel>
+            <Link to="my">
+                <TabBarIcon>
+                    <img src="http://mystore-1251466962.cosgz.myqcloud.com/icon_nav_button.png"/>
+                </TabBarIcon>
+                <TabBarLabel>我的</TabBarLabel>
+            </Link>
         </TabBarItem>
     </TabBar>
 )

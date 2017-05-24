@@ -43,13 +43,13 @@ const pdetails = (state = inititalState, action) =>{
             }
         //选择商品规格
         case types.CHOOSE_ATTR:
-            let sid = action.sid;//传入的是数组的键值，不是ID
-            let aid = action.aid;//传入的是数组的键值，不是ID
-            state.chooseId[sid] = aid;
+            let spec_key = action.spec_key;//传入的是SPEC数组的键值，不是ID
+            let attr_key = action.attr_key;//传入的是SPEC中ATTR数组的键值，不是ID
+            state.chooseId[spec_key] = attr_key;
             let spec = state.spec;//商品规格
             let str = '';//选择的属性ID串(用逗号隔开)(作为键值查询商品价格)
             let attr = '';//已选的属性名
-            state.chooseId.map(function(elem, index) {
+            state.chooseId.map((elem, index) =>{
                 str += spec[index]['attr'][elem]['id'] + ',';
                 attr += spec[index]['value'] + ':' + spec[index]['attr'][elem]['value'] + ' ';
             })

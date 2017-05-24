@@ -15,7 +15,17 @@ class App extends Component {
         let {init} = this.props;
         init();
     }
-
+    componentDidMount(){
+        document.getElementById('Public-footer').ontouchmove=function(e){
+            e.preventDefault();
+        }
+        document.getElementById('swiper-dom').ontouchmove=function(e){
+            e.preventDefault();
+        }
+        document.getElementById('home-cat').ontouchmove=function(e){
+            e.preventDefault();
+        }
+    }
     render() {
         const {actions,banlist,catlist,prolist} = this.props
 

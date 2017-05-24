@@ -40,17 +40,17 @@ const CartItem = ({...rest}) => {
 			</div>
 		</div>
 		<div styleName="cart-item">
-			<div styleName="cart-item-cb">
+			<div styleName="cart-item-cb" onClick={rest.chooseById}>
 				<p styleName="cart-item-cb-p">
-					<input styleName="cart-item-cb-p-cb" id={"cb-" + (rest.elem.id)} type="checkbox"  checked={rest.chooseId.includes(rest.elem.id)} onChange={rest.chooseById}/>
+					<input styleName="cart-item-cb-p-cb" id={"cb-" + (rest.elem.id)} type="checkbox"  checked={rest.chooseId.includes(rest.elem.id)}/>
 					<label htmlFor={"cb-" + (rest.elem.id)} ></label>
 				</p>
 			</div>
 			<div styleName="cart-item-detail" >
-					<div styleName="cart-item-img-item" >
+					<div styleName="cart-item-img-item" onClick={rest.chooseById}>
 						<img styleName="cart-item-img" src={rest.elem.goods_logo}/>
 					</div>
-					<div styleName={cartItemInfo1}>
+					<div styleName={cartItemInfo1} onClick={rest.chooseById}>
 						<h3 styleName="cart-item-info-title">{rest.elem.goods_name}</h3>
 						<div styleName="cart-item-info-sku">
 							<p>{rest.elem.goods_attr}</p>

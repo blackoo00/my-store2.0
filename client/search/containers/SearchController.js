@@ -81,10 +81,12 @@ const mapDispatchToProps = (dispatch) => ({
 	loadMorePro:() => {
 		if((document.body.scrollTop + document.body.clientHeight) >= document.body.scrollHeight){
 			// let count = $('.page-container li').length;
-            let count = document.getElementById("search-prods").children.length
-            setTimeout(()=>{
-			    dispatch(actions.searchGetMorePro(count,4))
-            },200)
+            if(document.getElementById("search-prods") != null){
+                let count = document.getElementById("search-prods").children.length
+                setTimeout(()=>{
+    			    dispatch(actions.searchGetMorePro(count,4))
+                },200)
+            }
 		}
 	}
 })

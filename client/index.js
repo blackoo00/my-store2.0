@@ -4,7 +4,7 @@ import {Router, match, browserHistory} from 'react-router'
 import {Provider} from 'react-redux'
 import routes from './routes'
 import configureStore from './common/store/configureStore'
-
+import './common/sass/animation.css'
 import FastClick from 'fastclick';
 FastClick.attach(document.body);
 

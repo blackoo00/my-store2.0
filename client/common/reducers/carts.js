@@ -7,7 +7,7 @@ const initialState = {
     chooseNum:0,//选中商品数量
     totalFee:0,//选中商品总额
     chooseAll:false,//是否全选
-    totalNum:0,//购物车选中商品总数
+    totalNum:0,//购物车中商品总数
     remark:'',//购物留言
 };
 
@@ -15,8 +15,8 @@ const initialState = {
 const totalFee = (products) =>{
   let total_fee = 0;
   for(let i in products){
-    if(products[i].choose == 1){
-      total_fee += products[i].goods_price*products[i].number;
+    if(products[i].choose == 1 && products[i].delete != 1){
+      total_fee += products[i].goods_price*parseInt(products[i].number);
     }
   }
   return total_fee;
@@ -26,8 +26,8 @@ const totalFee = (products) =>{
 const totalNum = (products) =>{
   let total_num = 0;
   for(let i in products){
-    if(products[i].choose == 1){
-      total_num += products[i].number;
+    if(products[i].choose == 1 && products[i].delete != 1){
+      total_num += parseInt(products[i].number);
     }
   }
   return total_num;
@@ -37,7 +37,7 @@ const totalNum = (products) =>{
 const chooseNum = (products) =>{
   let choose_num = 0;
   for(let i in products){
-    if(products[i].choose == 1){
+    if(products[i].choose == 1 && products[i].delete != 1){
       choose_num += 1;
     }
   }
@@ -131,7 +131,10 @@ const carts = (state = initialState, action) => {
         case types.REMOVE_CART_BY_ID://删除购物车
             state.products[action.cartId]['delete'] = 1;
             return{
-              ...state
+              ...state,
+              totalFee:totalFee(state.products),
+              totalNum:totalNum(state.products),
+              chooseNum:chooseNum(state.products)
             }
         case types.ASSIGN_SETTLE_CHOOSEIDS://结算页面
             state.products.map((item,key)=>{

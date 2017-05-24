@@ -19,14 +19,14 @@ function getExternals() {
 clientConfig = {
     context: path.resolve(__dirname, '..'),
     entry: {
-        bundle: './client',
         vendor: [
             'react',
             'react-dom',
             'redux',
             'react-redux',
             'superagent'
-        ]
+        ],
+        bundle: './client'
     },
     output: {
         path: path.resolve(__dirname, '../dist/client'),
@@ -67,7 +67,7 @@ clientConfig = {
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.CommonsChunkPlugin({
-            names: ['vendor', 'manifest'],
+            names: ['manifest', 'vendor'],
             filename: '[name].[chunkhash:8].js'
         }),
         new webpack.optimize.UglifyJsPlugin({

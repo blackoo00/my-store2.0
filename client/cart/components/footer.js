@@ -4,13 +4,13 @@ import CSSModules from 'react-css-modules';
 
 const Footer = ({carts,chooseAll,settle}) =>(
 	<div styleName="cart-item-f-fx">
-		<div styleName="cart-item-ft-cb">
+		<div styleName="cart-item-ft-cb" onClick={chooseAll}>
 			<p>
-				<input id="cb-footer" type="checkbox" onChange={chooseAll} checked={carts.chooseAll}/>
+				<input id="cb-footer" type="checkbox" checked={carts.chooseAll}/>
 				<label htmlFor="cb-footer"></label>
 			</p>
 		</div>
-		<div styleName="cart-item-qx">全选</div>
+		<div styleName="cart-item-qx" onClick={chooseAll}>全选</div>
 		<div styleName="cart-item-pay">
 			<div>
 				<div>

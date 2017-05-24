@@ -45,8 +45,8 @@ const mapDispatchToProps = (dispatch) => ({
 		dispatch(actions.handleHidePra())
 	},
 	//选择商品规格
-	chooseAttr:(sid,aid) => {
-		dispatch(actions.chooseAttr(sid,aid))
+	chooseAttr:(spec_key,attr_key) => {
+		dispatch(actions.chooseAttr(spec_key,attr_key))
 	},
 	//增加商品数量
 	addNumber:()=>{

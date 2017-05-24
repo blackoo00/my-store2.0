@@ -4,6 +4,12 @@ import utils from './utils';
 const STORESERVER="http://127.0.0.1/my-store/index.php/Home/Store/",
 ADDRESSSERVER="http://127.0.0.1/my-store/index.php/Home/Address/",
 MYSERVER="http://127.0.0.1/my-store/index.php/Home/My/";
+// const STORESERVER="http://192.168.1.112/my-store/index.php/Home/Store/",
+// ADDRESSSERVER="http://192.168.1.112/my-store/index.php/Home/Address/",
+// MYSERVER="http://192.168.1.112/my-store/index.php/Home/My/";
+// const STORESERVER="http://115.159.91.155/my-store/index.php?g=Home&c=Store&a=",
+// ADDRESSSERVER="http://115.159.91.155/my-store/index.php?g=Home&c=Address&a=",
+// MYSERVER="http://115.159.91.155/my-store/index.php?g=Home&c=My&a=";
 const initialArr = {
     url:'',
     data:{},
@@ -25,6 +31,7 @@ const ajaxData = (arr = initialArr,callback = function(){}) => {
     //         callback(res.data)
     //     }
     // })
+    // alert(arr.server + arr.url);
     utils.ajax({
         url: arr.server + arr.url,
         data:arr.data,
@@ -32,7 +39,7 @@ const ajaxData = (arr = initialArr,callback = function(){}) => {
         type:arr.type,
         dataType:'json',
     }).then(res => {
-        console.log(res)
+        // alert(res.data.pro.name)
         callback(res.data)
     })
 }
@@ -122,16 +129,15 @@ export default {
         let data = {
             url:'getProDetail',
             data:{pid:pid},
-            async:false
         }
         ajaxData(data,cb)
     },timeout || TIMEOUT),
     //收藏商品
-    collectionProduct:(pid,callback) => {
+    collectionProduct:(pid,cb) => {
         let data = {
             url:'collection',
             data:{pid:pid},
-            async:false
+            type:'post'
         }
         ajaxData(data,cb)
     },
@@ -140,6 +146,7 @@ export default {
         let data = {
             url:'addCartProduct',
             data:{cid:cart_id},
+            type:'post'
         }
         ajaxData(data,cb)
     },timeout || TIMEOUT),
